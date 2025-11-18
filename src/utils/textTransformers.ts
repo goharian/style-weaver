@@ -124,6 +124,76 @@ const textToStrikethrough = (text: string): string => {
   return text.split('').map(char => char === ' ' ? char : char + '\u0336').join('');
 };
 
+const textToZalgo = (text: string): string => {
+  const zalgoUp = [
+    '\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310',
+    '\u0352', '\u0357', '\u0351', '\u0307', '\u0308', '\u030a', '\u0342', '\u0343',
+    '\u0344', '\u034a', '\u034b', '\u034c', '\u0303', '\u0302', '\u030c', '\u0350'
+  ];
+  const zalgoDown = [
+    '\u0316', '\u0317', '\u0318', '\u0319', '\u031c', '\u031d', '\u031e', '\u031f',
+    '\u0320', '\u0324', '\u0325', '\u0326', '\u0329', '\u032a', '\u032b', '\u032c',
+    '\u032d', '\u032e', '\u032f', '\u0330', '\u0331', '\u0332', '\u0333', '\u0339',
+    '\u033a', '\u033b', '\u033c', '\u0345', '\u0347', '\u0348', '\u0349', '\u034d'
+  ];
+  
+  return text.split('').map(char => {
+    if (char === ' ' || char === '\n') return char;
+    let result = char;
+    const numMarks = Math.floor(Math.random() * 4) + 2;
+    for (let i = 0; i < numMarks; i++) {
+      if (Math.random() > 0.5) {
+        result += zalgoUp[Math.floor(Math.random() * zalgoUp.length)];
+      } else {
+        result += zalgoDown[Math.floor(Math.random() * zalgoDown.length)];
+      }
+    }
+    return result;
+  }).join('');
+};
+
+const textToBubble = (text: string): string => {
+  const bubbleChars: { [key: string]: string } = {
+    'a': '🅐', 'b': '🅑', 'c': '🅒', 'd': '🅓', 'e': '🅔', 'f': '🅕', 'g': '🅖', 'h': '🅗',
+    'i': '🅘', 'j': '🅙', 'k': '🅚', 'l': '🅛', 'm': '🅜', 'n': '🅝', 'o': '🅞', 'p': '🅟',
+    'q': '🅠', 'r': '🅡', 's': '🅢', 't': '🅣', 'u': '🅤', 'v': '🅥', 'w': '🅦', 'x': '🅧',
+    'y': '🅨', 'z': '🅩', 'A': '🅐', 'B': '🅑', 'C': '🅒', 'D': '🅓', 'E': '🅔', 'F': '🅕',
+    'G': '🅖', 'H': '🅗', 'I': '🅘', 'J': '🅙', 'K': '🅚', 'L': '🅛', 'M': '🅜', 'N': '🅝',
+    'O': '🅞', 'P': '🅟', 'Q': '🅠', 'R': '🅡', 'S': '🅢', 'T': '🅣', 'U': '🅤', 'V': '🅥',
+    'W': '🅦', 'X': '🅧', 'Y': '🅨', 'Z': '🅩'
+  };
+  return text.split('').map(char => bubbleChars[char] || char).join('');
+};
+
+const textToRegionalIndicators = (text: string): string => {
+  const regionalIndicators: { [key: string]: string } = {
+    'a': '🇦', 'b': '🇧', 'c': '🇨', 'd': '🇩', 'e': '🇪', 'f': '🇫', 'g': '🇬', 'h': '🇭',
+    'i': '🇮', 'j': '🇯', 'k': '🇰', 'l': '🇱', 'm': '🇲', 'n': '🇳', 'o': '🇴', 'p': '🇵',
+    'q': '🇶', 'r': '🇷', 's': '🇸', 't': '🇹', 'u': '🇺', 'v': '🇻', 'w': '🇼', 'x': '🇽',
+    'y': '🇾', 'z': '🇿', 'A': '🇦', 'B': '🇧', 'C': '🇨', 'D': '🇩', 'E': '🇪', 'F': '🇫',
+    'G': '🇬', 'H': '🇭', 'I': '🇮', 'J': '🇯', 'K': '🇰', 'L': '🇱', 'M': '🇲', 'N': '🇳',
+    'O': '🇴', 'P': '🇵', 'Q': '🇶', 'R': '🇷', 'S': '🇸', 'T': '🇹', 'U': '🇺', 'V': '🇻',
+    'W': '🇼', 'X': '🇽', 'Y': '🇾', 'Z': '🇿'
+  };
+  return text.split('').map(char => regionalIndicators[char] || char).join(' ');
+};
+
+const textToSparkles = (text: string): string => {
+  return `✨ ${text} ✨`;
+};
+
+const textToFire = (text: string): string => {
+  return `🔥 ${text} 🔥`;
+};
+
+const textToStars = (text: string): string => {
+  return `⭐ ${text} ⭐`;
+};
+
+const textToFlowers = (text: string): string => {
+  return `🌸 ${text} 🌸`;
+};
+
 export const textStyles: TextStyle[] = [
   { name: "Bold", transform: textToBold },
   { name: "Italic", transform: textToItalic },
@@ -132,8 +202,15 @@ export const textStyles: TextStyle[] = [
   { name: "Wide Text", transform: textToWideText },
   { name: "Circled", transform: textToCircled },
   { name: "Squared", transform: textToSquared },
+  { name: "Bubble", transform: textToBubble },
+  { name: "Regional Flags", transform: textToRegionalIndicators },
+  { name: "Zalgo", transform: textToZalgo },
   { name: "Glitch", transform: textToGlitch },
   { name: "Upside Down", transform: textToUpsideDown },
   { name: "Wavy Underline", transform: textToWavyUnderline },
   { name: "Strikethrough", transform: textToStrikethrough },
+  { name: "✨ Sparkles", transform: textToSparkles },
+  { name: "🔥 Fire", transform: textToFire },
+  { name: "⭐ Stars", transform: textToStars },
+  { name: "🌸 Flowers", transform: textToFlowers },
 ];
