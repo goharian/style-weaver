@@ -8,7 +8,7 @@ export const Footer = () => {
           Made with <Heart className="w-4 h-4 text-primary fill-primary" /> by TextStyler
         </div>
         <a
-          href="https://github.com"
+          href="https://github.com/goharian/style-weaver"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 hover:text-foreground transition-colors"
