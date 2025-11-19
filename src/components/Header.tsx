@@ -9,14 +9,14 @@ export const Header = () => {
           <ThemeToggle />
         </div>
         <div className="text-center">
-          <div className="flex items-center justify-center gap-2 mb-2 animate-fade-in-up">
-            <Sparkles className="w-8 h-8 text-primary animate-pulse-glow" />
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+          <div className="flex items-center justify-center gap-3 mb-3 animate-fade-in-up">
+            <Sparkles className="w-9 h-9 text-primary animate-pulse-glow drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)]" />
+            <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-primary via-accent-foreground to-primary-glow bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 tracking-tight">
               TextStyler
             </h1>
           </div>
-          <p className="text-muted-foreground text-lg animate-fade-in" style={{ animationDelay: "0.2s", animationFillMode: "backwards" }}>
-            Transform your text into beautiful, unique styles ✨
+          <p className="text-muted-foreground text-xl font-medium animate-fade-in max-w-2xl mx-auto" style={{ animationDelay: "0.2s", animationFillMode: "backwards" }}>
+            Transform your text into beautiful, unique styles with one click ✨
           </p>
         </div>
       </div>
